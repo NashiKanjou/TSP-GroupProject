@@ -195,7 +195,7 @@ public class Main {
 			part_data[6] = "" + (LocalSearch.t);
 			String path = "";
 			for (int i = 0; i < best_overall.size() - 1; i++) {
-				path += i + "->";
+				path +=  best_overall.get(i) + "->";
 			}
 			path += best_overall.get(best_overall.size() - 1);
 			part_data[8] = "" + (path);
@@ -240,7 +240,7 @@ public class Main {
 			part_data[5] = "" + (DFS_H.total_t);
 			String path = "";
 			for (int i = 0; i < DFS_H.p.size() - 1; i++) {
-				path += i + "->";
+				path += DFS_H.p.get(i) + "->";
 			}
 			path += DFS_H.p.get(DFS_H.p.size() - 1);
 			part_data[7] = "" + (path);
