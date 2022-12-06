@@ -21,7 +21,7 @@ public class Main {
 			if (fileEntry.isDirectory()) {
 				listFilesForFolder(fileEntry);
 			} else {
-				if (fileEntry.getName().contains("txt") || fileEntry.getName().contains("out")) {
+				if (fileEntry.getName().endsWith(".txt") || fileEntry.getName().endsWith(".out")) {
 					double[][] graph = input_trans.getInput(fileEntry);
 					part_data = new String[9];
 					part_data[0] = fileEntry.getName();
@@ -152,7 +152,7 @@ public class Main {
 
 		long end = System.currentTimeMillis();
 		if (isAuto) {
-			part_data[2] = "" + (end - start - 600000);
+			part_data[2] = "" + (end - (start - 600000));
 			part_data[4] = "" + (best_overall_cost);
 			part_data[6] = "" + (LocalSearch.t);
 			String path = "";
