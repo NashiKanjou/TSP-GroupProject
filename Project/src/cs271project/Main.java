@@ -154,14 +154,14 @@ public class Main {
 
 	public static void sls(double[][] graph) {
 		LocalSearch.t = 0;
-		long start = System.currentTimeMillis() + 600000;
+		LocalSearch.start = System.currentTimeMillis() + 600000;
 		int N = graph.length;
 		List<Integer> best_overall = LocalSearch.random_permutation(N);
 		double best_overall_cost = LocalSearch.calc_cost(best_overall, graph);
 		List<String> list_searched = new LinkedList<String>();
 
 		int count = 500;
-		while (start > System.currentTimeMillis() && count > 0) {
+		while (LocalSearch.start > System.currentTimeMillis() && count > 0) {
 			List<Integer> path_random = LocalSearch.random_permutation(N);
 			boolean not_converged = true;
 			if (list_searched.contains(path_random.toString())) {
@@ -190,7 +190,7 @@ public class Main {
 
 		long end = System.currentTimeMillis();
 		if (isAuto) {
-			part_data[2] = "" + (end - (start - 600000));
+			part_data[2] = "" + (end - (LocalSearch.start - 600000));
 			part_data[4] = "" + (best_overall_cost);
 			part_data[6] = "" + (LocalSearch.t);
 			String path = "";
