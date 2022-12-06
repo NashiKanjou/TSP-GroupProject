@@ -8,6 +8,7 @@ import java.util.Random;
 public class LocalSearch {
 	public static Random r = new Random();
 	public static final int max_size = 5000;
+	public static int t = 0;
 
 	public static List<Integer> random_permutation(int N) {
 		List<Integer> list = new ArrayList<Integer>();
@@ -35,6 +36,7 @@ public class LocalSearch {
 	}
 
 	public static void swap(List<Integer> path, int idx_node1, int idx_node2) {
+		t++;
 		int temp = path.get(idx_node1);
 		path.set(idx_node1, path.get(idx_node2));
 		path.set(idx_node2, temp);

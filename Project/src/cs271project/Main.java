@@ -1,12 +1,9 @@
 package cs271project;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +14,7 @@ public class Main {
 	public static boolean isAuto = false;
 	public static long time;
 	public static List<String[]> data = new ArrayList<String[]>();
+	public static String[] part_data;
 
 	private static void listFilesForFolder(final File folder) {
 		for (final File fileEntry : folder.listFiles()) {
@@ -25,10 +23,13 @@ public class Main {
 			} else {
 				if (fileEntry.getName().contains("txt") || fileEntry.getName().contains("out")) {
 					double[][] graph = input_trans.getInput(fileEntry);
+					part_data = new String[9];
+					part_data[0] = fileEntry.getName();
 					System.out.println("Running DFS for: " + fileEntry.getName());
 					dfs(graph);
 					System.out.println("Running SLS for: " + fileEntry.getName());
 					sls(graph);
+					data.add(part_data);
 					System.out.println("Ended");
 					System.out.println();
 				}
@@ -38,6 +39,7 @@ public class Main {
 
 	public static void Auto() {
 		isAuto = true;
+		data.clear();
 		csv = new File("output.csv");
 		if (!csv.exists()) {
 			try {
@@ -46,11 +48,21 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
+		part_data = new String[9];
+		part_data[0] = "File";
+		part_data[1] = "DFS Runtime (ms)";
+		part_data[2] = "SLS Runtime (ms)";
+		part_data[3] = "DFS Solution Quality";
+		part_data[4] = "SLS Solution Quality";
+		part_data[5] = "DFS NUmber Nodes Expanded";
+		part_data[6] = "SLS NUmber Nodes Expanded";
+		part_data[7] = "DFS Solution";
+		part_data[8] = "SLS Solution";
+		data.add(part_data);
 		listFilesForFolder(new File("."));
 		try {
 			writeToFile();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -58,10 +70,14 @@ public class Main {
 	public static void writeToFile() throws IOException {
 		BufferedWriter bw = new BufferedWriter(new FileWriter(csv));
 		for (String[] raw : data) {
-
+			String line = "";
+			for (String str : raw) {
+				line += str + ",";
+			}
+			bw.newLine();
+			bw.write(line);
 		}
-
-
+		bw.close();
 	}
 
 	public static void main(String[] args) {
@@ -99,14 +115,15 @@ public class Main {
 	}
 
 	public static void sls(double[][] graph) {
-		time = System.currentTimeMillis() + 600000;
+		LocalSearch.t = 0;
+		long start = System.currentTimeMillis() + 600000;
 		int N = graph.length;
 		List<Integer> best_overall = LocalSearch.random_permutation(N);
 		double best_overall_cost = LocalSearch.calc_cost(best_overall, graph);
 		List<String> list_searched = new LinkedList<String>();
 
 		int count = 500;
-		while (time > System.currentTimeMillis() && count > 0) {
+		while (start > System.currentTimeMillis() && count > 0) {
 			List<Integer> path_random = LocalSearch.random_permutation(N);
 			boolean not_converged = true;
 			if (list_searched.contains(path_random.toString())) {
@@ -132,8 +149,18 @@ public class Main {
 				count -= 1;
 			}
 		}
-		if (isAuto) {
 
+		long end = System.currentTimeMillis();
+		if (isAuto) {
+			part_data[2] = "" + (end - start - 600000);
+			part_data[4] = "" + (best_overall_cost);
+			part_data[6] = "" + (LocalSearch.t);
+			String path = "";
+			for (int i = 0; i < best_overall.size() - 1; i++) {
+				path += i + "->";
+			}
+			path += best_overall.get(best_overall.size() - 1);
+			part_data[8] = "" + (path);
 			return;
 		}
 		System.out.println(best_overall);
@@ -170,7 +197,15 @@ public class Main {
 		DFS_H.p.add(Start_node);
 
 		if (isAuto) {
-
+			part_data[1] = "" + (time_msec_end - time_msec);
+			part_data[3] = "" + (DFS_H.upper_bound);
+			part_data[5] = "" + (DFS_H.total_t);
+			String path = "";
+			for (int i = 0; i < DFS_H.p.size() - 1; i++) {
+				path += i + "->";
+			}
+			path += DFS_H.p.get(DFS_H.p.size() - 1);
+			part_data[7] = "" + (path);
 			return;
 		}
 
