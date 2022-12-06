@@ -40,6 +40,7 @@ public class Main {
 	public static void auto_dir(String filepath) {
 		// copied auto but added input to filepath I want to check.  
 		isAuto = true;
+		data.clear();
 		csv = new File("output.csv");
 		if (!csv.exists()) {
 			try {
@@ -49,6 +50,17 @@ public class Main {
 			}
 		}
 //		listFilesForFolder(new File("."));
+		part_data = new String[9];
+		part_data[0] = "File";
+		part_data[1] = "DFS Runtime (ms)";
+		part_data[2] = "SLS Runtime (ms)";
+		part_data[3] = "DFS Solution Quality";
+		part_data[4] = "SLS Solution Quality";
+		part_data[5] = "DFS Number Nodes Expanded";
+		part_data[6] = "SLS Nmmber Nodes Expanded";
+		part_data[7] = "DFS Solution";
+		part_data[8] = "SLS Solution";
+		data.add(part_data);
 		listFilesForFolder(new File(filepath));
 		try {
 			writeToFile();
@@ -106,7 +118,7 @@ public class Main {
 		System.out.println("Please input the filename of the graph, or input \"auto\" to run all txt and out files:");
 		String filename = sc.nextLine();
 		if (filename.equals("auto_dir")) {
-			auto_dir("test_data");
+			auto_dir("test_data"); // This should probably be input from next line but I don't have time to try currently
 			sc.close();
 			return;
 		}
