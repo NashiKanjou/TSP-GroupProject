@@ -57,7 +57,7 @@ public class Main {
 		part_data[3] = "DFS Solution Quality";
 		part_data[4] = "SLS Solution Quality";
 		part_data[5] = "DFS Number Nodes Expanded";
-		part_data[6] = "SLS Nmmber Nodes Expanded";
+		part_data[6] = "SLS Number Iterations";
 		part_data[7] = "DFS Solution";
 		part_data[8] = "SLS Solution";
 		data.add(part_data);
@@ -88,7 +88,7 @@ public class Main {
 		part_data[3] = "DFS Solution Quality";
 		part_data[4] = "SLS Solution Quality";
 		part_data[5] = "DFS Number Nodes Expanded";
-		part_data[6] = "SLS Nmmber Nodes Expanded";
+		part_data[6] = "SLS Number Iterations";
 		part_data[7] = "DFS Solution";
 		part_data[8] = "SLS Solution";
 		data.add(part_data);
