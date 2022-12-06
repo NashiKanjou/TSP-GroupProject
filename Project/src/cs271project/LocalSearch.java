@@ -9,7 +9,8 @@ public class LocalSearch {
 	public static Random r = new Random();
 	public static final int max_size = 5000;
 	public static int t = 0;
-
+	public static long start;
+	
 	public static List<Integer> random_permutation(int N) {
 		List<Integer> list = new ArrayList<Integer>();
 		List<Integer> permutation = new ArrayList<Integer>();
@@ -54,7 +55,7 @@ public class LocalSearch {
 		// double cost = N * 5000;
 		int p = 1;
 		boolean search = true;
-		while (search) {
+		while (search && start > System.currentTimeMillis()) {
 			search = false;
 			for (int node1 = 0; node1 < N; node1++) {
 				for (int node2 = 0; node2 < N; node2++) {
