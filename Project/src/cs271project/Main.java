@@ -153,7 +153,7 @@ public class Main {
 	}
 
 	public static void sls(double[][] graph) {
-		LocalSearch.t = 0;
+		LocalSearch.t = BigInteger.valueOf(0);
 		LocalSearch.start = System.currentTimeMillis() + 600000;
 		int N = graph.length;
 		List<Integer> best_overall = LocalSearch.random_permutation(N);
@@ -192,7 +192,7 @@ public class Main {
 		if (isAuto) {
 			part_data[2] = "" + (end - (LocalSearch.start - 600000));
 			part_data[4] = "" + (best_overall_cost);
-			part_data[6] = "" + (LocalSearch.t);
+			part_data[6] = "" + (LocalSearch.t.toString());
 			String path = "";
 			for (int i = 0; i < best_overall.size() - 1; i++) {
 				path +=  best_overall.get(i) + "->";
@@ -218,7 +218,7 @@ public class Main {
 
 		time = System.currentTimeMillis() + 600000;
 		DFS_H.upper_bound = Double.MAX_VALUE;
-		DFS_H.total_t = 0;
+		DFS_H.total_t = BigInteger.valueOf(0);
 		int size = (int) (heuristic.len_Graph / 0.75 + 1);
 		DFS_H.p = new ArrayList<Integer>(size);
 		DFS_H.temp_p = new ArrayList<Integer>(size);
@@ -255,7 +255,7 @@ public class Main {
 		 * System.out.println("path_verify:" + distance_verify);
 		 */
 		System.out.println("shortest path cost: " + DFS_H.upper_bound);
-		System.out.println("cost of search: " + DFS_H.total_t);
+		System.out.println("cost of search: " + DFS_H.total_t.toString());
 
 		// long t = 1;
 		// for (int i = 1; i < heuristic.len_Graph; i++) {
