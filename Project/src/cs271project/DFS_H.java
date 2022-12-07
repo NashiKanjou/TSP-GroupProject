@@ -1,5 +1,6 @@
 package cs271project;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,7 +10,7 @@ public class DFS_H {
 	public static double upper_bound = Double.MAX_VALUE;
 	// public static long time_dfs = 0;
 	// public static long time_hx = 0;
-	public static BigInteger total_t = 0;
+	public static BigInteger total_t = BigInteger.valueOf(0);
 	public static List<Integer> p = new ArrayList<Integer>();
 	public static List<Integer> temp_p = new ArrayList<Integer>();
 	public static int hx_steps = 4;
