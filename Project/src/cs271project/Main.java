@@ -239,7 +239,7 @@ public class Main {
 		if (isAuto) {
 			part_data[1] = "" + (time_msec_end - time_msec);
 			part_data[3] = "" + (DFS_H.upper_bound);
-			part_data[5] = "" + (DFS_H.total_t);
+			part_data[5] = "" + (DFS_H.total_t.toString());
 			String path = "";
 			for (int i = 0; i < DFS_H.p.size() - 1; i++) {
 				path += DFS_H.p.get(i) + "->";
