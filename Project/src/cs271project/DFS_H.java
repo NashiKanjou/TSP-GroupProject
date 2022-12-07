@@ -9,7 +9,7 @@ public class DFS_H {
 	public static double upper_bound = Double.MAX_VALUE;
 	// public static long time_dfs = 0;
 	// public static long time_hx = 0;
-	public static long total_t = 0;
+	public static BigInteger total_t = 0;
 	public static List<Integer> p = new ArrayList<Integer>();
 	public static List<Integer> temp_p = new ArrayList<Integer>();
 	public static int hx_steps = 4;
@@ -17,7 +17,7 @@ public class DFS_H {
 	public static void DFS(int startnode, double[][] adj_matrix, int node, double path, List<Integer> visited) {
 		/* timing */
 		// long t_msec = System.nanoTime();
-		total_t++;
+		total_t.add(BigInteger.ONE);
 		// System.out.println(total_t + ": " + visited.size());
 		if (Main.time < System.currentTimeMillis()) {
 			return;
