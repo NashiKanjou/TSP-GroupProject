@@ -8,7 +8,7 @@ import java.util.Random;
 public class LocalSearch {
 	public static Random r = new Random();
 	public static final int max_size = 5000;
-	public static int t = 0;
+	public static long t = 0;
 	public static long start;
 	
 	public static List<Integer> random_permutation(int N) {
