@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class Main {
 	}
 
 	public static void auto_dir(String filepath) {
-		// copied auto but added input to filepath I want to check.  
+		// copied auto but added input to filepath I want to check.
 		isAuto = true;
 		data.clear();
 		csv = new File("output.csv");
@@ -69,7 +70,7 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void Auto() {
 		isAuto = true;
 		data.clear();
@@ -118,7 +119,8 @@ public class Main {
 		System.out.println("Please input the filename of the graph, or input \"auto\" to run all txt and out files:");
 		String filename = sc.nextLine();
 		if (filename.equals("auto_dir")) {
-			auto_dir("test_data"); // This should probably be input from next line but I don't have time to try currently
+			auto_dir("test_data"); // This should probably be input from next line but I don't have time to try
+									// currently
 			sc.close();
 			return;
 		}
@@ -195,7 +197,7 @@ public class Main {
 			part_data[6] = "" + (LocalSearch.t.toString());
 			String path = "";
 			for (int i = 0; i < best_overall.size() - 1; i++) {
-				path +=  best_overall.get(i) + "->";
+				path += best_overall.get(i) + "->";
 			}
 			path += best_overall.get(best_overall.size() - 1);
 			part_data[8] = "" + (path);
