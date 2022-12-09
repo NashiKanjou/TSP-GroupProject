@@ -144,12 +144,32 @@ public class Main {
 			return;
 		}
 
-		System.out.println("Input 1 to do DFS and 2 for SLS: ");
+		System.out.println("Input 1 to do DFS, 2 for SLS, 3 for path verify: ");
 		int i = Integer.parseInt(sc.nextLine());
 		if (i == 1) {
 			dfs(graph);
-		} else {
+		} else if (i == 2) {
 			sls(graph);
+		} else {
+			checkpath(graph);
+		}
+		sc.close();
+	}
+
+	public static void checkpath(double[][] graph) {
+		System.out.println("Path verify..");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("please input path or 'exit'");
+		String raw = sc.next();
+		List<Integer> list = new ArrayList<Integer>();
+		while (!raw.equals("exit")) {
+			list.clear();
+			for (String str : raw.split("->")) {
+				list.add(Integer.parseInt(str));
+			}
+			System.out.println("Cost: "+LocalSearch.calc_cost(list, graph));
+			System.out.println("please input path or 'exit'");
+			raw = sc.next();
 		}
 		sc.close();
 	}
