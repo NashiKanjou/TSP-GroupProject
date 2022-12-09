@@ -144,7 +144,7 @@ public class Main {
 			return;
 		}
 
-		System.out.println("Input 1 to do DFS, 2 for SLS, 3 for path verify: ");
+		System.out.println("Input 1 to do DFS and 2 for SLS: ");
 		int i = Integer.parseInt(sc.nextLine());
 		if (i == 1) {
 			dfs(graph);
